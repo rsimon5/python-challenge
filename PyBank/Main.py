@@ -15,8 +15,10 @@ with open(BD_csv, newline="") as csvfile:
 
    Total = 0
    Total_Months = 0
-   Increase = 0
-   Decrease = 0
+   Previous = 0
+   Increase1 = 0
+   Decrease1 = 0
+
 
    first = True
    for row in csvreader:
@@ -28,15 +30,18 @@ with open(BD_csv, newline="") as csvfile:
          first = False
       Last = row[1]
 
-      if (int(row[1]) > int(Increase)):  
-         Increase = row[1]
-         Increase_print = ("Greatest Increase in Profits: " + str(row[0]) 
-         + " ($" + str(row[1]) + ")")
-      if (int(row[1]) < int(Decrease)):  
-         Decrease = row[1]
-         Decrease_print = ("Greatest Decrease in Profits: " + str(row[0])
-         + " ($" + str(row[1]) + ")")
-   
+      if row != 1:
+         if ((int(row[1]) - Previous) > Increase1):
+            Increase1 = int(row[1]) - Previous  
+            Increase_print = ("Greatest Increase in Profits: " + str(row[0]) 
+            + " ($" + str(Increase1) + ")")
+         if ((int(row[1]) - Previous) < Decrease1):  
+            Decrease1 = int(row[1]) - Previous
+            Decrease_print = ("Greatest Decrease in Profits: " + str(row[0])
+            + " ($" + str(Decrease1) + ")")
+         Previous = int(row[1])
+         
+      
    Change = (int(Last) - int(First)) / (Total_Months - 1)
    
    print("Total Months:" + str(Total_Months))
@@ -46,6 +51,7 @@ with open(BD_csv, newline="") as csvfile:
    print(Decrease_print)
 
 with open("budget_data.txt", "w") as text_file:
+
    print("Financial Analysis", file = text_file)
    print("----------------------------",file = text_file)
    print("Total Months:" + str(Total_Months), file = text_file)
