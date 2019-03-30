@@ -36,8 +36,7 @@ with open(BD_csv, newline="") as csvfile:
             Decrease_print = ("Greatest Decrease in Profits: " + str(row[0])
             + " ($" + str(Decrease1) + ")")
          Previous = int(row[1])
-         
-      
+               
    Change = (int(Last) - int(First)) / (Total_Months - 1)
 
 with open("budget_data.txt", "w") as text_file:
