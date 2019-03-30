@@ -3,9 +3,6 @@
 import os
 import csv
 
-print("Financial Analysis")
-print("----------------------------")
-
 BD_csv = os.path.join("../", "budget_data.csv")
 
 with open(BD_csv, newline="") as csvfile:
@@ -18,7 +15,6 @@ with open(BD_csv, newline="") as csvfile:
    Previous = 0
    Increase1 = 0
    Decrease1 = 0
-
 
    first = True
    for row in csvreader:
@@ -43,12 +39,6 @@ with open(BD_csv, newline="") as csvfile:
          
       
    Change = (int(Last) - int(First)) / (Total_Months - 1)
-   
-   print("Total Months:" + str(Total_Months))
-   print("Total: $" + str(Total))
-   print("Average Change: $" + str("{0:.2f}".format(Change)))
-   print(Increase_print)
-   print(Decrease_print)
 
 with open("budget_data.txt", "w") as text_file:
 
@@ -60,3 +50,6 @@ with open("budget_data.txt", "w") as text_file:
    file = text_file)
    print(Increase_print, file = text_file)
    print(Decrease_print, file = text_file)
+
+with open("budget_data.txt", "r") as Text_file2:
+   print(Text_file2.read())
