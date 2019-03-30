@@ -25,7 +25,7 @@ with open(election_csv, newline="") as electionfile:
         elif (row[2] == "O'Tooley"):
             OTooley_Votes += 1
 
-Khan_Percentage = round(100 * Khan_Votes/Total_Votes, 3)
+Khan_Percentage = float("{0:.3f}".format(100 * Khan_Votes/Total_Votes))
 Correy_Percentage = round(100 * Correy_Votes/Total_Votes, 3)
 Li_Percentage = round(100 * Li_Votes/Total_Votes, 3)
 OTooley_Percentage = round(100 * OTooley_Votes/Total_Votes, 3)
